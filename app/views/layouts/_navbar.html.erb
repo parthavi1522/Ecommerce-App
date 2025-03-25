@@ -18,7 +18,11 @@
 
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="/">Admin</a>
+          <% if user_signed_in? && current_user.admin? %>
+            <%= link_to "Admin", admin_dashboard_path, class: "nav-link" %>
+          <% else %>
+            <%= link_to "Admin", new_user_session_path, class: "nav-link" %>
+          <% end %>
         </li>
 
         <li class="nav-item dropdown">
