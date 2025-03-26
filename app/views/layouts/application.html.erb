@@ -27,7 +27,17 @@
 
   <body>
     
-    <%= render "layouts/navbar" %>
+    <% if user_signed_in? %>
+      <% if current_user.admin? %>
+        <%= render 'layouts/admin_navbar' %>
+      <% elsif current_user.customer? %>
+        <%= render 'layouts/customer_navbar' %>
+      <% else %>
+        <%= render 'layouts/navbar' %>
+      <% end %>
+    <% else %>
+      <%= render 'layouts/navbar' %>
+    <% end %>
 
     <div class="container mt-4">
       <%= yield %>

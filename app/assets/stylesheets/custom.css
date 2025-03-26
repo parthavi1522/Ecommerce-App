@@ -15,6 +15,7 @@ footer {
 }
 .navbar {
   min-height: 80px;
+  background-color: #1F2937 !important;
 }
 .nav-item.dropdown:hover .dropdown-menu {
   display: block;
@@ -74,4 +75,7 @@ footer {
 .btn-login:hover {
   background: #4cff4c !important;
   color: black !important;
+}
+.table tbody tr td{
+  font-size: 15px;
 }
