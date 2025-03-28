@@ -1,0 +1,40 @@
+<% content_for :title, "Users" %>
+
+<div class="card">
+  <div class="card-header bg-primary text-white text-center">
+    <h5>Users List</h5>
+  </div>
+  <div class="card-body">
+    <table class="table table-striped">
+      <thead class="table-dark">
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Profile Image</th>
+          <th>Mobile Number</th>
+          <th>Address</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.id %></td>
+            <td><%= user.full_name %></td>
+            <td>
+              <% if user.profile.attached? %>
+                <%= image_tag user.profile, size: "100x100" %>
+              <% end %>
+            </td>
+            <td><%= user.mobile_number %></td>
+            <td><%= user.address %></td>
+            <td>
+              <%= link_to "Edit", edit_admin_user_path(user), class: "btn btn-sm btn-warning" %>
+              <%= link_to "Delete", admin_user_path(user), method: :delete, class: "btn btn-sm btn-danger", data: { confirm: "Are you sure?" } %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

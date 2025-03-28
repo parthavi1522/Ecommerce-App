@@ -8,6 +8,22 @@ html, body {
 .container {
   flex: 1;
 }
+.flash-notice {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  padding: 15px;
+  color: white;
+  border-radius: 5px;
+  z-index: 1000;
+  background-color: #fff;
+}
+.alert-success {
+  background-color: #4CAF50;
+}
+.alert-danger {
+  background-color: #DC3545;
+}
 footer {
   color: white;
   text-align: center;
@@ -78,4 +94,7 @@ footer {
 }
 .table tbody tr td{
   font-size: 15px;
+}
+.navbar-nav .nav-link.active {
+  border-bottom: 3px solid #007bff;
 }

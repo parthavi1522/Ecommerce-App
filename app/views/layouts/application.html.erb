@@ -26,7 +26,18 @@
   </head>
 
   <body>
-    
+    <% if flash[:notice].present? %>
+      <div class="flash-notice alert-success" data-controller="flash">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+
+    <% if flash[:alert].present? %>
+      <div class="flash-notice alert-danger" data-controller="flash">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
+
     <% if user_signed_in? %>
       <% if current_user.admin? %>
         <%= render 'layouts/admin_navbar' %>

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     authenticate :user, ->(u) { u.admin? } do
       namespace :admin do
         get 'dashboard', to: 'dashboards#index'
+        resources :users, except: [:show, :new, :create]
       end
     end
   end
