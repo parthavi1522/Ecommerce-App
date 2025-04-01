@@ -24,6 +24,20 @@ html, body {
 .alert-danger {
   background-color: #DC3545;
 }
+.bg-gradient-customers {
+  /* background: linear-gradient(135deg, #FFDAB9, #FFA07A); */
+  background: red;
+}
+
+.bg-gradient-products {
+  /* background: linear-gradient(135deg, #9370DB, #800080); */
+  background: orange;
+}
+
+.bg-gradient-orders {
+  /* background: linear-gradient(135deg, #90EE90, #3CB371); */
+  background: darkcyan;
+}
 footer {
   color: white;
   text-align: center;
@@ -92,9 +106,27 @@ footer {
   background: #4cff4c !important;
   color: black !important;
 }
-.table tbody tr td{
-  font-size: 15px;
-}
 .navbar-nav .nav-link.active {
   border-bottom: 3px solid #007bff;
+}
+
+/* Status Badges */
+.status-badge {
+  padding: 5px 10px;
+  border-radius: 15px;
+  color: white;
+  font-size: 0.8rem;
+}
+.status-badge.delivered {
+  background-color: #28a745; /* Green */
+}
+.status-badge.order-confirmed {
+  background-color: #6f42c1; /* Purple */
+}
+.status-badge.pending {
+  background-color: #ffc107; /* Yellow */
+  color: #000; /* Dark text for yellow */
+}
+.status-badge.cancelled {
+  background-color: #dc3545; /* Red */
 }
