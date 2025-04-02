@@ -4,13 +4,10 @@ Rails.application.routes.draw do
   }
   get "up" => "rails/health#show", as: :rails_health_check
 
-  authenticated :user do
-    authenticate :user, ->(u) { u.admin? } do
-      namespace :admin do
-        get 'dashboard', to: 'dashboards#index'
-        resources :users, except: [:show, :new, :create]
-      end
-    end
+  namespace :admin do
+    get 'dashboard', to: 'dashboards#index'
+    resources :users, except: [:show, :new, :create]
+    resources :products, except: [:show]
   end
   
   root "home#index"
