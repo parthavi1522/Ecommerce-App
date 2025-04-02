@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     get 'dashboard', to: 'dashboards#index'
     resources :users, except: [:show, :new, :create]
     resources :products, except: [:show]
+    resources :orders, except: [:show, :new, :create]
   end
   
   root "home#index"

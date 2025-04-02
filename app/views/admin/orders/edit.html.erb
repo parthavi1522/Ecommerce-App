@@ -1,0 +1,46 @@
+<div class="justify-content-center">
+  <div class="card shadow-sm">
+    <div class="card-header bg-primary text-white">
+      <h4 class="mb-0 text-center">
+        Update Order Status
+      </h4>
+    </div>
+    <div class="card-body">
+      <% if @order.errors.any? %>
+        <div style="color: red">
+          <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+          <ul>
+            <% @order.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <%= form_with model: @order, url: admin_order_path(@order), method: :patch, local: true, data: { turbo: false } do |f| %>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-floating">
+              <%= f.select :order_status, Order.order_statuses.keys.map { |status| [status.titleize, status] }, {}, class: "form-control" %>
+              <%= f.label :order_status, "Order Status", class: "form-label" %>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-floating">
+              <%= f.select :payment_status, Order.payment_statuses.keys.map { |status| [status.titleize, status] }, {}, class: "form-control" %>
+              <%= f.label :payment_status, "Payment Status", class: "form-label" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-12">
+            <%= f.submit 'Update Order', class: "btn btn-primary w-100" %>
+          </div>
+        </div>
+
+      <% end %>
+    </div>
+  </div>
+</div>
