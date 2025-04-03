@@ -5,6 +5,16 @@
         <h4 class="mb-0 fw-bold">We value your feedback</h4>
       </div>
       <div class="card-body p-4">
+        <% if @feedback.errors.any? %>
+          <div style="color: red">
+            <h2><%= pluralize(@feedback.errors.count, "error") %> prohibited this feedback from being saved:</h2>
+            <ul>
+              <% @feedback.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
         <%= form_with model: @feedback, local: true, data: { turbo: false } do |f| %>
 
           <div class="mb-3 form-floating">

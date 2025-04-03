@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   resources :feedbacks, only: [:create]
   get 'feedbacks', to: 'feedbacks#new'
+  get 'contact', to: 'pages#contact'
+  post 'contact', to: 'pages#create_contact'
 
   root "home#index"
 end
