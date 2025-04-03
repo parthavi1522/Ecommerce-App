@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :users, except: [:show, :new, :create]
     resources :products, except: [:show]
     resources :orders, except: [:show, :new, :create]
+    resources :feedbacks, only: [:index]
   end
   
   root "home#index"
