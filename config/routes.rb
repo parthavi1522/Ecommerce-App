@@ -11,6 +11,9 @@ Rails.application.routes.draw do
     resources :orders, except: [:show, :new, :create]
     resources :feedbacks, only: [:index]
   end
-  
+
+  resources :feedbacks, only: [:create]
+  get 'feedbacks', to: 'feedbacks#new'
+
   root "home#index"
 end

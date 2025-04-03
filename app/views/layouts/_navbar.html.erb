@@ -40,7 +40,11 @@
             More
           </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="pagesDropdown">
-            <li><a class="dropdown-item" href="/"><i class="fas fa-comments"></i> Feedback</a></li>
+            <li>
+              <%= link_to feedbacks_path, class: "dropdown-item" do %>
+                <i class="fas fa-comments"></i> Feedback
+              <% end %>
+            </li>
             <li><a class="dropdown-item" href="/"><i class="fas fa-phone-volume"></i> Contact Us</a></li>
             <li><a class="dropdown-item" href="/"><i class="fas fa-info-circle"></i> About Us</a></li>
           </ul>
