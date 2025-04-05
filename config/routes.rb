@@ -18,5 +18,7 @@ Rails.application.routes.draw do
   post 'contact', to: 'pages#create_contact'
   get 'about', to: 'pages#about'
 
+  get 'customer_dashboard', to: 'customer_dashboards#index'
+
   root "home#index"
 end

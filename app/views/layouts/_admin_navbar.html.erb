@@ -24,7 +24,9 @@
       </ul>
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <%= link_to "Logout", destroy_user_session_path, method: :delete, data: { confirm: "Are you sure?" }, class: "nav-link text-white" %>
+          <%= link_to destroy_user_session_path, method: :delete, class: "nav-link text-white" do %>
+            <i class="fas fa-right-from-bracket me-2"></i>
+          <% end %>
         </li>
       </ul>
     </div>

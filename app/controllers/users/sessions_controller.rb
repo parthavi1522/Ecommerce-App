@@ -27,6 +27,6 @@ class Users::SessionsController < Devise::SessionsController
   private
 
   def after_sign_in_path_for(resource)
-    resource.admin? ? admin_dashboard_path : root_path
+    resource.admin? ? admin_dashboard_path : customer_dashboard_path
   end
 end
