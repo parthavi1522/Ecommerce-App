@@ -66,7 +66,8 @@ footer {
 }
 /* Glowing input fields */
 .login-box input[type="text"], 
-.login-box input[type="password"] {
+.login-box input[type="password"],
+  .login-box input[type="file"] {
   background: none;
   color: #fff;
   border: 2px solid #4c8bf5;
@@ -76,11 +77,13 @@ footer {
   transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 .login-box input[type="text"]::placeholder, 
-.login-box input[type="password"]::placeholder {
+.login-box input[type="password"]::placeholder,
+.login-box input[type="file"]::placeholder {
   color: rgba(255, 255, 255, 0.6);
 }
 .login-box input[type="text"]:focus, 
-.login-box input[type="password"]:focus {
+.login-box input[type="password"]:focus,
+.login-box input[type="file"]:focus {
   border-color: #5ce1e6;
   box-shadow: 0 0 8px #5ce1e6;
 }

@@ -11,8 +11,6 @@ class User < ApplicationRecord
 
   validates :username, presence: true, uniqueness: { case_sensitive: false }
   validates :first_name, :last_name, :mobile_number, presence: true
-  validates :email, presence: true, uniqueness: true,
-            format: { with: URI::MailTo::EMAIL_REGEXP, message: "must be a valid email address" }
   validates :mobile_number, presence: true, uniqueness: true,
             format: { with: /\A[6789]\d{9}\z/, message: "must be a valid 10-digit Indian mobile number" }
 
@@ -31,5 +29,13 @@ class User < ApplicationRecord
 
   def full_name
     [first_name, last_name].compact.join(" ")
+  end
+
+  def email_required?
+    false
+  end
+
+  def email_changed?
+    false
   end
 end
