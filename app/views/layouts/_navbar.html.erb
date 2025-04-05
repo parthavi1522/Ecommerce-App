@@ -50,7 +50,11 @@
                 <i class="fas fa-phone-volume"></i> Contact Us
               <% end %>
             </li>
-            <li><a class="dropdown-item" href="/"><i class="fas fa-info-circle"></i> About Us</a></li>
+            <li>
+              <%= link_to about_path, class: "dropdown-item" do %>
+                <i class="fas fa-info-circle"></i> About Us
+              <% end %>
+            </li>
           </ul>
         </li>
       </ul>

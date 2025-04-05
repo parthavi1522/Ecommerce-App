@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get 'feedbacks', to: 'feedbacks#new'
   get 'contact', to: 'pages#contact'
   post 'contact', to: 'pages#create_contact'
+  get 'about', to: 'pages#about'
 
   root "home#index"
 end
