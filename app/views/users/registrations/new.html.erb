@@ -5,13 +5,17 @@
       <p class="text-center">Please enter your details to create account !</p>
 
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { multipart: true, data: { turbo: false } }) do |f| %>
-        <%= render "devise/shared/error_messages", resource: resource %>
+        <%= render "users/shared/error_messages", resource: resource %>
 
         <% [:first_name, :last_name, :username, :address, :mobile_number].each do |field| %>
           <div class="form-group mb-3">
             <%= f.text_field field, placeholder: field.to_s.titleize, class: "form-control text-center" %>
           </div>
         <% end %>
+
+        <div class="form-group mb-3">
+          <%= f.email_field :email, class: "form-control text-center", placeholder: "Email" %>
+        </div>
 
         <div class="mb-3">
           <%= f.password_field :password, class: "form-control text-center", placeholder: "Password" %>
