@@ -3,7 +3,8 @@ class HomeController < ApplicationController
   before_action :redirect_to_admin
 
   def index
-    @product_count_in_cart = 0
+    @products_count_in_cart = 0
+    @products = Product.with_attached_image.all
   end
 
   private

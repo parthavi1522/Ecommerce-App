@@ -8,4 +8,8 @@ module ApplicationHelper
       "guest-page"
     end
   end
+
+  def cart_items_count
+    session[:cart]&.size || 0
+  end
 end

@@ -7,7 +7,9 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <%= link_to "Dashboard", admin_dashboard_path, class: "nav-link text-white #{active_class(admin_dashboard_path)}" %>
+          <%= link_to admin_dashboard_path, class: "nav-link text-white #{active_class(admin_dashboard_path)}" do %>
+            <i class="fas fa-tachometer-alt"></i> Dashboard
+          <% end %>
         </li>
         <li class="nav-item">
           <%= link_to "Users", admin_users_path, class: "nav-link text-white #{active_class(admin_users_path)}" %>
@@ -24,7 +26,7 @@
       </ul>
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <%= link_to destroy_user_session_path, method: :delete, class: "nav-link text-white" do %>
+          <%= link_to destroy_user_session_path, method: :delete, class: "nav-link text-danger" do %>
             <i class="fas fa-right-from-bracket me-2"></i>
           <% end %>
         </li>
