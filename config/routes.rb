@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get 'about', to: 'pages#about'
 
   get 'customer_dashboard', to: 'customer_dashboards#index'
+  resources :profiles, only: [:show, :edit, :update]
 
   root "home#index"
 end

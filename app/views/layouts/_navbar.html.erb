@@ -16,7 +16,7 @@
         </div>
       </form>
 
-      <ul class="navbar-nav">
+      <ul class="navbar-nav align-items-center">
         <% if user_signed_in? %>
           <% if current_user.admin? %>
             <li class="nav-item">
@@ -24,7 +24,14 @@
             </li>
           <% else %>
             <li class="nav-item">
-              <%= link_to "Dashboard", customer_dashboard_path, class: "nav-link text-white #{active_class(customer_dashboard_path)}" %>
+              <%= link_to customer_dashboard_path, class: "nav-link text-white #{active_class(customer_dashboard_path)}" do %>
+                <i class="fas fa-tachometer-alt"></i> Dashboard
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to profile_path(current_user), class: "nav-link text-white #{active_class(profile_path(current_user))}" do %>
+                <i class="fas fa-user"></i> Profile
+              <% end %>
             </li>
           <% end %>
           <li class="nav-item">
@@ -78,6 +85,16 @@
             </ul>
           </li>
         <% end %>
+
+        <li class="nav-item me-3">
+          <%= link_to "cart_path", class: "nav-link position-relative" do %>
+            <i class="fas fa-shopping-cart fa-lg"></i>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger cart-badge">
+              <%= cart_items_count %>
+              <span class="visually-hidden">items in cart</span>
+            </span>
+          <% end %>
+        </li>
       </ul>
     </div>
   </div>

@@ -30,12 +30,4 @@ class User < ApplicationRecord
   def full_name
     [first_name, last_name].compact.join(" ")
   end
-
-  def email_required?
-    false
-  end
-
-  def email_changed?
-    false
-  end
 end

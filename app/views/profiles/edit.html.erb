@@ -1,0 +1,86 @@
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <div class="card shadow rounded-4">
+      <div class="card-header bg-primary text-white text-center fw-bold">
+        Edit Your Profile
+      </div>
+
+      <div class="card-body">
+        <% if @user.errors.any? %>
+          <div style="color: red">
+            <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+            <ul>
+              <% @user.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <%= form_with model: @user, url: profile_path, method: :patch, local: true, html: { multipart: true } do |f| %>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-floating">
+                <%= f.text_field :first_name, class: "form-control", placeholder: "First Name" %>
+                <%= f.label :first_name, "First Name", class: "form-label" %>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-floating">
+                <%= f.text_field :last_name, class: "form-control", placeholder: "Last Name" %>
+                <%= f.label :last_name, "Last Name", class: "form-label" %>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-md-6">
+              <div class="form-floating">
+                <%= f.text_field :username, class: "form-control", placeholder: "UserName" %>
+                <%= f.label :username, "UserName", class: "form-label" %>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-floating">
+                <%= f.email_field :email, class: "form-control", placeholder: "Email" %>
+                <%= f.label :email, "Email", class: "form-label" %>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-md-6">
+              <div class="form-floating">
+                <%= f.text_field :mobile_number, class: "form-control", placeholder: "Mobile Number" %>
+                <%= f.label :mobile_number, "Mobile Number", class: "form-label" %>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-floating">
+                <%= f.text_field :address, class: "form-control", placeholder: "Address" %>
+                <%= f.label :address, "Address", class: "form-label" %>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-md-12">
+              <label class="form-label fw-bold">Profile</label>
+              <%= f.file_field :profile, class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="row mt-3">
+            <div class="col-12 text-center">
+              <%= f.submit 'Update Profile', class: "btn btn-primary w-100" %>
+            </div>
+          </div>
+
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
