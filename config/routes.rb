@@ -22,5 +22,18 @@ Rails.application.routes.draw do
   get 'customer_dashboard', to: 'customer_dashboards#index'
   resources :profiles, only: [:show, :edit, :update]
 
+  resource :carts, only: [:show] do
+    post 'add/:product_id', to: 'carts#add', as: 'add'
+    delete 'remove/:product_id', to: 'carts#remove', as: 'remove'
+  end
+  resources :cart_items, only: [:create, :update, :destroy]
+  resources :orders, only: [:new, :create, :show]
+
+  get 'create_checkout_session', to: 'payments#create_checkout_session'
+  post 'create_checkout_session', to: 'payments#create_checkout_session'
+  get 'orders/:id/success', to: 'orders#success', as: 'order_success'
+  get 'orders/:id/cancel', to: 'orders#cancel', as: 'order_cancel'
+  post 'webhooks/stripe', to: 'webhooks#stripe'
+
   root "home#index"
 end

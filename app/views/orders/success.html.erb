@@ -1,0 +1,15 @@
+<div class="card shadow-sm border-success">
+  <div class="card-body text-center">
+    <h2 class="text-success mb-3">🎉 Payment Successful!</h2>
+    <p class="lead">Thank you for your order, <strong><%= @order.user.full_name %></strong>!</p>
+
+    <hr>
+    <h4 class="fw-bold text-primary text-opacity-75">Order Summary</h4>
+    <p><strong>Order Number:</strong> <%= @order.order_number %></p>
+    <p><strong>Amount:</strong> ₹<%= number_to_currency(@order.total_price, unit: '', precision: 2) %></p>
+    <p><strong>Order Status:</strong> <%= @order.order_status&.capitalize %></p>
+    <p><strong>Payment Status:</strong> <%= @order.payment_status&.capitalize %></p>
+
+    <%= link_to "Continue Shopping", customer_dashboard_path, class: "btn btn-primary mt-4" %>
+  </div>
+</div>

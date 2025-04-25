@@ -135,40 +135,31 @@ footer {
   font-size: 1.2rem;
 }
 .guest-page {
-  background-color: aliceblue;
+  background-color: lightgray;
 }
 .cart-badge {
-  font-size: 0.75rem;
-  padding: 4px 6px;
+  font-size: 0.7rem;
+  padding: 0.5em 0.75em;
 }
 .card-img-top {
   height: 200px;
   object-fit: cover;
 }
-
 .product-card {
   transition: transform 0.2s ease, box-shadow 0.3s ease;
   border-radius: 1rem;
 }
-
 .product-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
-
 .card-img-top {
   height: 200px;
   object-fit: cover;
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
 }
-
 .card-title {
   font-weight: 600;
   color: #333;
-}
-
-.badge {
-  font-size: 0.9rem;
-  padding: 0.5em 0.75em;
 }

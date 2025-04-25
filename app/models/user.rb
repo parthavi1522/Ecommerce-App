@@ -6,6 +6,8 @@ class User < ApplicationRecord
          authentication_keys: [:username]
   
   has_one_attached :profile
+  has_one :cart, dependent: :destroy
+  has_many :orders, dependent: :destroy
 
   scope :customers, -> { where(is_admin: false) }
 
@@ -29,5 +31,13 @@ class User < ApplicationRecord
 
   def full_name
     [first_name, last_name].compact.join(" ")
+  end
+
+  def create_cart
+    self.create_cart!
+  end
+
+  def cart_item_count
+    cart&.cart_items&.sum(:quantity) || 0
   end
 end

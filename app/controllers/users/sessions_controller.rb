@@ -12,8 +12,11 @@ module Users
 
       user = User.find_by(username: params[:user][:username])
 
-      if user && user.valid_password?(params[:user][:password])
+      if user&.valid_password?(params[:user][:password])
         sign_in(user)
+
+        CartMerger.new(user, session).merge!
+
         redirect_to after_sign_in_path_for(user), notice: 'Successfully logged in!'
       else
         flash[:alert] = 'Invalid username or password'
@@ -23,12 +26,6 @@ module Users
 
     def destroy
       super
-    end
-
-    private
-
-    def after_sign_in_path_for(resource)
-      resource.admin? ? admin_dashboard_path : customer_dashboard_path
     end
   end
 end

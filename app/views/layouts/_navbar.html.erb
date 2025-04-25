@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark shadow">
   <div class="container">
-    <a class="navbar-brand" href="/">Ecommerce</a>
+    <%= link_to "Ecommerce", nav_dashboard_path, class: "navbar-brand" %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
@@ -87,7 +87,7 @@
         <% end %>
 
         <li class="nav-item me-3">
-          <%= link_to "cart_path", class: "nav-link position-relative" do %>
+          <%= link_to carts_path, class: "nav-link position-relative text-white" do %>
             <i class="fas fa-shopping-cart fa-lg"></i>
             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger cart-badge">
               <%= cart_items_count %>
