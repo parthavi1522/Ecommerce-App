@@ -24,10 +24,22 @@
             <td><%= order.user.full_name %></td>
             <td><%= order.user.mobile_number %></td>
             <td><%= order.shipping_address %></td>
-            <td></td>
-            <td></td>
-            <td><%= order.order_status&.capitalize %></td>
-            <td><%= order.payment_status&.capitalize %></td>
+            <td>
+              <% order.order_items.each do |item| %>
+                <div><%= item.product.name %></div>
+              <% end %>
+            </td>
+            <td>
+              <% order.order_items.each do |item| %>
+                <% if item.product.image.attached? %>
+                  <%= image_tag item.product.image, size: "60x60", class: "img-thumbnail me-1 mb-1" %>
+                <% else %>
+                  <img src="https://via.placeholder.com/60x60?text=No+Image" class="img-thumbnail me-1 mb-1" />
+                <% end %>
+              <% end %>
+            </td>
+            <td><%= order_status_badge(order) %></td>
+            <td><%= payment_status_badge(order) %></td>
             <td>
               <%= link_to "Edit", edit_admin_order_path(order), class: "btn btn-sm btn-warning" %>
               <%= link_to "Delete", admin_order_path(order), method: :delete, class: "btn btn-sm btn-danger", data: { confirm: "Are you sure?" } %>

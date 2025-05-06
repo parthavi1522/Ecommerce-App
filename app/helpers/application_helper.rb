@@ -27,8 +27,27 @@ module ApplicationHelper
     else
       (session[:cart] || {}).values.sum
     end
-    # return 0 unless session[:cart]
+  end
 
-    # session[:cart].values.sum
+  def order_status_badge(order)
+    badge_class = case order.order_status
+                  when "delivered" then "bg-success"
+                  when "cancelled" then "bg-danger"
+                  when "shipped" then "bg-warning"
+                  else "bg-primary"
+                  end
+
+    content_tag(:span, order.order_status.capitalize, class: "badge #{badge_class}")
+  end
+
+  def payment_status_badge(order)
+    badge_class = case order.payment_status
+                  when "paid" then "bg-success"
+                  when "failed" then "bg-danger"
+                  when "refunded" then "bg-info"
+                  else "bg-secondary"
+                  end
+  
+    content_tag(:span, order.payment_status.capitalize, class: "badge #{badge_class}")
   end
 end
