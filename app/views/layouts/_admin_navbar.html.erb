@@ -12,16 +12,24 @@
           <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to "Users", admin_users_path, class: "nav-link text-white #{active_class(admin_users_path)}" %>
+          <%= link_to admin_users_path, class: "nav-link text-white #{active_class(admin_users_path)}" do %>
+            <i class="fas fa-users"></i> Users
+          <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to "Products", admin_products_path, class: "nav-link text-white #{active_class(admin_products_path)}" %>
+          <%= link_to admin_products_path, class: "nav-link text-white #{active_class(admin_products_path)}" do %>
+            <i class="fas fa-brands fa-product-hunt"></i> Products
+          <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to "Orders", admin_orders_path, class: "nav-link text-white #{active_class(admin_orders_path)}" %>
+          <%= link_to admin_orders_path, class: "nav-link text-white #{active_class(admin_orders_path)}" do %>
+            <i class="fas fa-book-open"></i> Orders
+          <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to "Feedbacks", admin_feedbacks_path, class: "nav-link text-white #{active_class(admin_feedbacks_path)}" %>
+          <%= link_to admin_feedbacks_path, class: "nav-link text-white #{active_class(admin_feedbacks_path)}" do %>
+            <i class="fas fa-comments"></i> Feedbacks
+          <% end %>
         </li>
       </ul>
       <ul class="navbar-nav ms-auto">

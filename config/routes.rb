@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     delete 'remove/:product_id', to: 'carts#remove', as: 'remove'
   end
   resources :cart_items, only: [:create, :update, :destroy]
-  resources :orders, only: [:new, :create, :show]
+  resources :orders, only: [:index, :new, :create, :show]
 
   get 'create_checkout_session', to: 'payments#create_checkout_session'
   post 'create_checkout_session', to: 'payments#create_checkout_session'

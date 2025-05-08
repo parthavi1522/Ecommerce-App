@@ -1,5 +1,7 @@
 class Order < ApplicationRecord
   belongs_to :user
+  has_many :order_items, dependent: :destroy
+  has_many :products, through: :order_items, dependent: :destroy
 
   validates :user_id, :order_date, :shipping_address, presence: true
   validates :order_number, presence: true, uniqueness: true

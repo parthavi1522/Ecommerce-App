@@ -1,6 +1,10 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!
   before_action :load_cart_items, only: [:new, :create]
+
+  def index
+    @orders = current_user.orders.includes(order_items: :product)
+  end
 
   def new
     @order = Order.new
@@ -21,18 +25,19 @@ class OrdersController < ApplicationController
       stripe_session = build_stripe_session(@order)
       redirect_to stripe_session.url, allow_other_host: true
     else
-      redirect_to carts_path, alert: 'Could not place order'
+      render :new
     end
   end
 
   def success
-    if (@order = Order.find_by(id: params[:id]))&.payment_pending?
+    @order = current_user.orders.find_by(id: params[:id])
+    if @order&.payment_pending?
       @order.update(payment_status: :paid, order_status: :pending)
     end
   end
 
   def cancel
-    @order = Order.find_by(id: params[:id])
+    @order = current_user.orders.find_by(id: params[:id])
     if @order&.update(order_status: "cancelled", payment_status: "pending")
       flash[:notice] = "Your order has been cancelled successfully."
     else
@@ -59,10 +64,16 @@ class OrdersController < ApplicationController
 
   def create_order_items(order)
     @cart_items.each do |item|
-      order.order_items.create(
+      product = item[:product]
+      quantity = item[:quantity]
+      item_price = product.price
+      total_price = item_price * quantity
+  
+      order.order_items.create!(
         product: item[:product],
         quantity: item[:quantity],
-        total_price: item[:product].price
+        item_price: item_price,
+        total_price: total_price
       )
     end
   end
@@ -89,7 +100,7 @@ class OrdersController < ApplicationController
       success_url: order_success_url(order.id),
       cancel_url: order_cancel_url(order.id),
       metadata: { order_id: order.id },
-      billing_address_collection: 'required',
+      billing_address_collection: 'required'
     )
   end
 end

@@ -42,7 +42,7 @@
             <td><%= payment_status_badge(order) %></td>
             <td>
               <%= link_to "Edit", edit_admin_order_path(order), class: "btn btn-sm btn-warning" %>
-              <%= link_to "Delete", admin_order_path(order), method: :delete, class: "btn btn-sm btn-danger", data: { confirm: "Are you sure?" } %>
+              <%= link_to "Delete", admin_order_path(order), method: :delete, class: "btn btn-sm btn-danger mt-2", data: { confirm: "Are you sure?" } %>
             </td>
           </tr>
         <% end %>
