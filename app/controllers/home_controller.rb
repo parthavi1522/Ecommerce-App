@@ -4,7 +4,11 @@ class HomeController < ApplicationController
 
   def index
     @products_count_in_cart = 0
-    @products = Product.with_attached_image.all
+    if params[:query].present?
+      @products = Product.with_attached_image.where("LOWER(name) LIKE :query OR LOWER(description) LIKE :query", query: "%#{params[:query].downcase}%")
+    else
+      @products = Product.with_attached_image.all
+    end
   end
 
   private

@@ -25,6 +25,7 @@
         </div>
         <div class="col-md-4">
           <p><strong>Shipment Address:</strong> </br><%= order.shipping_address %></p>
+          <p><strong>Total Amount:</strong> </br>₹ <%= order.total_price %></p>
         </div>
         <div class="col-md-4 text-md-end">
           <p><strong>Payment Status:</strong> </br><%= payment_status_badge(order) %></p>
