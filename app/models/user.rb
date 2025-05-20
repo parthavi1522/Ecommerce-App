@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_one_attached :profile
   has_one :cart, dependent: :destroy
   has_many :orders, dependent: :destroy
+  has_many :feedbacks, dependent: :destroy
 
   scope :customers, -> { where(is_admin: false) }
 

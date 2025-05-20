@@ -1,10 +1,11 @@
-<div class="row justify-content-center mt-5">
-  <div class="col-md-6">
-    <div class="card shadow-lg border-0 rounded-3">
-      <div class="card-header bg-primary text-white text-center py-3 rounded-top-3">
-        <h4 class="mb-0 fw-bold">We value your feedback</h4>
+<div class="row justify-content-center mt-2">
+  <div class="col-md-8">
+    <div class="card shadow rounded-4">
+      <div class="card-header bg-primary text-white text-center fw-bold">
+        We value your feedback
       </div>
-      <div class="card-body p-4">
+
+      <div class="card-body">
         <% if @feedback.errors.any? %>
           <div style="color: red">
             <h2><%= pluralize(@feedback.errors.count, "error") %> prohibited this feedback from being saved:</h2>
@@ -15,22 +16,22 @@
             </ul>
           </div>
         <% end %>
-        <%= form_with model: @feedback, local: true, data: { turbo: false } do |f| %>
 
-          <div class="mb-3 form-floating">
-            <%= f.text_field :name, class: "form-control rounded-3", placeholder: "Enter your name" %>
-            <%= f.label :name, "Name", class: "form-label" %>
+        <%= form_with model: @feedback, local: true, html: { multipart: true }, data: { turbo: false } do |f| %>
+          <div class="row">
+            <div class="col-12">
+              <div class="form-floating">
+                <%= f.text_area :content, class: "form-control h-100", placeholder: "Content", rows: 5 %>
+                <%= f.label :content, "Content", class: "form-label" %>
+              </div>
+            </div>
           </div>
 
-          <div class="mb-3 form-floating">
-            <%= f.text_area :content, class: "form-control rounded-3", placeholder: "Enter your content", rows: 4, style: "height: 100px;" %>
-            <%= f.label :content, "Content", class: "form-label" %>
+          <div class="row mt-3">
+            <div class="col-12 text-center">
+              <%= f.submit 'Submit', class: "btn btn-primary w-100" %>
+            </div>
           </div>
-
-          <div class="d-grid">
-            <%= f.submit "Submit Feedback", class: "btn btn-primary btn-lg rounded-pill shadow-sm" %>
-          </div>
-
         <% end %>
       </div>
     </div>

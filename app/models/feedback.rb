@@ -1,7 +1,7 @@
 class Feedback < ApplicationRecord
-  belongs_to :user, optional: true
+  belongs_to :user
 
-  validates :content, :name, presence: true
+  validates :content, presence: true
 
   before_create :set_feedback_date
 

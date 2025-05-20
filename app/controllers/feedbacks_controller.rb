@@ -1,5 +1,5 @@
 class FeedbacksController < ApplicationController
-  skip_before_action :authenticate_user!
+  before_action :authenticate_user!
 
   def new
     @feedback = Feedback.new
@@ -7,6 +7,7 @@ class FeedbacksController < ApplicationController
 
   def create
     @feedback = Feedback.new(feedback_params)
+    @feedback.user = current_user
   
     if @feedback.save
       redirect_to root_path, notice: 'Feedback was successfully submited.'

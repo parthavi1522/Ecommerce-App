@@ -10,13 +10,18 @@
         <div class="card-body">
           <div class="d-flex align-items-center mb-3">
             <% if feedback.user %>
-              <img src="<%= image_tag(feedback.user.profile_image || 'default-avatar.png') %>" alt="User Avatar" class="rounded-circle me-3" width="50" height="50">
+              <% if feedback.user.profile.attached? %>
+                <%= image_tag feedback.user.profile.variant(resize_to_fill: [50, 50]), alt: "User Avatar", class: "rounded-circle me-3" %>
+              <% else %>
+                <%= image_tag "default-avatar.png", alt: "Default Avatar", class: "rounded-circle me-3", width: 50, height: 50 %>
+              <% end %>
               <h5 class="mb-0"><%= feedback.user.full_name %></h5>
             <% else %>
-              <img src="<%= asset_path('default-avatar.png') %>" alt="Guest Avatar" class="rounded-circle me-3" width="50" height="50">
+              <%= image_tag "default-avatar.png", alt: "Guest Avatar", class: "rounded-circle me-3", width: 50, height: 50 %>
               <h5 class="mb-0"><%= feedback.name.presence || "Guest User" %></h5>
             <% end %>
           </div>
+      
 
           <p class="text-muted small"><%= feedback.feedback_date.strftime("%B %d, %Y") %></p>
           <p><%= feedback.content %></p>
