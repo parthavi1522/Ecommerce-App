@@ -209,3 +209,7 @@ footer {
   object-fit: cover;
   border-radius: 6px;
 }
+
+.form-floating .field_with_errors {
+  color: red;
+}
