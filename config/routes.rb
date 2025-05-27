@@ -29,8 +29,6 @@ Rails.application.routes.draw do
   resources :cart_items, only: [:create, :update, :destroy]
   resources :orders, only: [:index, :new, :create, :show]
 
-  get 'create_checkout_session', to: 'payments#create_checkout_session'
-  post 'create_checkout_session', to: 'payments#create_checkout_session'
   get 'orders/:id/success', to: 'orders#success', as: 'order_success'
   get 'orders/:id/cancel', to: 'orders#cancel', as: 'order_cancel'
   post 'webhooks/stripe', to: 'webhooks#stripe'
